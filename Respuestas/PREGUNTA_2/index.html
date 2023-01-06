@@ -16,47 +16,45 @@
       <br>	
       <img src="../../Imagenes/selloespe.jpg" width="65%" align="center">
       <h1 style="padding-left:25%;">Pregunta 2</h1>
-      <p>2) Desarrollar la función CargarDatos(), para desplegar el contenido (Asincrónico) de un archivo XML:</p>
+      <p>2)Mediante un archivo XML, analizar dicho archivo XML utilizando el siguiente Script:</p>
       <ul style="list-style-type: none;">
-        <li>xhttp = new XMLHttpRequest();<br>
-		  xhttp.onreadystatechange = function() {;<br>
-		     if (this.readyState == 4 && this.status == 200) {;<br>
-                 document.getElementById("demo").innerHTML = ; <br>
-		          this.responseText; <br>
-			 }; <br>
-		   }; ;<br>
-		  xhttp.open("GET", "Texto.txt", true);<br>
-          xhttp.send();<br>
+        <li>xmlhttp = new XMLHttpRequest();<br>
+          xmlhttp.open("GET", "ejemplo.xml", false);<br>
+          xmlhttp.send();<br>
+          xmlDoc = xmlhttp.responseXML;<br>
         </li>
       </ul>
+      
       <div class="section" id="enunciado" style="padding-left:25%;margin-top: 5%;" >
-      <button style="align-self: center;" type="button" onclick="CargarDatos()">Obtener Datos</button>
+      <button style="padding: 4px 2px; background-color: #7AB37B ; color:black;" onclick="CargarDatos()">Obtener Datos</button>
       </div>
+    </br>
+    
+      <div class="col-lg-12" style="border-style: solid;margin-right: 600px; color: black;" data-aos="fade-up" data-aos-delay="100" align="left">
       <div class="section" id="resolucion" style="margin-top: 5%;">
       </div>
       <div class="section" style="margin-top: 5%;">
       </div>
+      </div></center>
       <br>
-      <p id="demo"></p>
-      <button onclick="window.location.href='../../index.html'">Menu principal</button>
+      <button style="padding: 4px 2px; background-color: #9B95F6 ; color:black;" onclick="window.location.href='../../index.html'">Menu principal</button>
     </div>
 
+   
+    
 <script>
+  xmlhttp = new XMLHttpRequest(); //Creacion del objeto XMLHttpRequest
+  xmlhttp.open("GET", "ejemplo.xml", false);//Enviar la solicitud para obtener el archivo ejemplo.xml
+  xmlhttp.send();
+  xmlDoc = xmlhttp.responseXML;//Funcion que va a ser llamada cuando la solicitud reciba una respuesta
+  //Funcion para recuperar los datos del txt
   function CargarDatos() {
-      var xmlhttp = new XMLHttpRequest();
-      xmlhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-          document.getElementById("demo").innerHTML = this.responseText;
-        }
-      };
-      xmlhttp.open("GET", "ejemplo.xml", false);
-      xmlhttp.send();
-      xmlDoc = xmlhttp.responseXML;
+    document.getElementById("resolucion").innerHTML = '';
+    const n = xmlDoc.getElementsByTagName("nombre");
+    for (var i = 0; i < n.length; i++) {
+      document.getElementById("resolucion").innerHTML += xmlDoc.getElementsByTagName("nombre")[i].childNodes[0].nodeValue+" come "+xmlDoc.getElementsByTagName("comida")[i].childNodes[0].nodeValue+"<br>";
     }
-    
-    
-  
-  
+  }
 </script>
 
 </body>
