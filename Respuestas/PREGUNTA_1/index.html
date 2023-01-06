@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<title>LABORATORIO</title>
+		<style type="text/css">
+			#background{position:fixed; width:99%; height:130%;}
+			#fixed {position:absolute; top: 0px; left: 0px;}
+		</style>
+	</head>
+	<body>
+		<div>
+			<img id="background" src="../../Imagenes/fondo.jpg"/> 
+		</div>
+		<div id="fixed">
+			</br></br></br>
+			<div style="padding-left:510px;">
+				<img src="../../Imagenes/selloespe.jpg" alt="ESPE" height="100" >
+			</div>
+			<div style="text-align: center;">
+				<h2>
+					<p style="text-align: center" >Pregunta 1</p>
+					
+				</h2>
+				
+					<p style="text-align: center">1. Analizar una cadena de texto en un objeto DOM XML y extraer esa
+						Información con JavaScript</p>
+					<p style="text-align: center">Para este ejercicio se utilizaria una cadena de texto sobre tipos de animales dentro de un habitat.</p>
+					<p>Tipos de animales</p>
+				
+			</div>
+			
+			
+			<div style=" display: flex; flex-direction: row; justify-content: center;">
+				<div style="display: flex; justify-content: center; flex-direction: column; align-items: center; width: 50%;">
+					
+				</div>
+				<div style="display: flex; justify-content: center; flex-direction: column; align-items: center; width: 45%;">
+					<h2><p style="text-align: center"> Ejecución</p></h2>
+					<p id="demo"></p>
+				<button style="padding: 4px 2px; background-color: #A6EEF3 ; color:black;" onclick="cargarXML()">Primer animal</button>
+					<p id="demo"></p>
+				<button style="padding: 4px 2px; background-color: #B8F3BB ; color:black;" onclick="cargar2XML()">Segundo animal</button>
+					<p id="demo"></p>
+				<button style="padding: 4px 2px; background-color: #D7AEF4 ; color:black;" onclick="cargar3XML()">Tercer animal</button>
+				
+			</div>
+
+            <script>
+            var parser, xmlDoc;
+            var text = "<zoologico><animal><mamifero>Oso</mamifero><habitat>Clima frio</habitat><estado>Vivo</estado></animal><animal><oviparo>Guacamayo</oviparo><habitat>Selva lluviosa</habitat><estado>Muerto</estado></animal><animal><reptil>Dinosaurio</reptil><habitat>bosques de araucarias</habitat><estado>Extinto</estado></animal></zoologico>";
+              function cargarXML(){
+                parser = new DOMParser();
+            xmlDoc = parser.parseFromString(text,"text/xml");
+
+            document.getElementById("demo").innerHTML =
+            "Tipo de animal : "+xmlDoc.getElementsByTagName("mamifero")[0].childNodes[0].nodeValue + " , " +
+            xmlDoc.getElementsByTagName("habitat")[0].childNodes[0].nodeValue + " , " +
+            xmlDoc.getElementsByTagName("estado")[0].childNodes[0].nodeValue;
+              }
+
+             function cargar2XML(){
+                parser = new DOMParser();
+            xmlDoc = parser.parseFromString(text,"text/xml");
+
+            document.getElementById("demo").innerHTML =
+            "Tipo de animal : "+xmlDoc.getElementsByTagName("oviparo")[0].childNodes[0].nodeValue + " , " +
+            xmlDoc.getElementsByTagName("habitat")[1].childNodes[0].nodeValue + " , " +
+            xmlDoc.getElementsByTagName("estado")[1].childNodes[0].nodeValue;
+              }
+            
+            function cargar3XML(){
+                parser = new DOMParser();
+            xmlDoc = parser.parseFromString(text,"text/xml");
+
+            document.getElementById("demo").innerHTML =
+            "Tipo de animal : "+xmlDoc.getElementsByTagName("reptil")[0].childNodes[0].nodeValue + " , " +
+            xmlDoc.getElementsByTagName("habitat")[2].childNodes[0].nodeValue + " , " +
+            xmlDoc.getElementsByTagName("estado")[2].childNodes[0].nodeValue;
+              }
+            </script>
+            
+			</div>
+			
+				<div style="padding-left:250px; ">
+
+				<br><br><a href="../../index.html" style="font-size: 20px;">Regresar</a><br> <br>
+				</div>
+			</div>						
+		</div> 		
+	</body>
+</html>
